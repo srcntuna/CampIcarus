@@ -12,6 +12,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { CamperFormComponent } from './camper-form/camper-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CamperService } from './camper.service';
+import { ActivitiesFormComponent } from './activities-form/activities-form.component';
 
 @NgModule({
   declarations: [

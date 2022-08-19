@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Activity } from '../activity';
+import { ActivityService } from '../activity.service';
 
 @Component({
   selector: 'app-activities-page',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivitiesPageComponent implements OnInit {
 
-  constructor() { }
+  activities: Activity[] = []; 
+
+  constructor(private activityService: ActivityService) { 
+
+  }
 
   ngOnInit(): void {
+     this.activityService.findAll().subscribe( data => this.activities = data)
   }
 
 }

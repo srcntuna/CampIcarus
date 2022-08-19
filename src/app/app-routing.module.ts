@@ -6,14 +6,14 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 
 const routes: Routes = [
-  { path: 'activities', component: ActivitiesPageComponent },
   { path: 'campers', component: CampersPageComponent },
   { path: 'signups', component: SignUpPageComponent },
   { path: '', component: HomePageComponent },
+  { path: 'activities', component: ActivitiesPageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

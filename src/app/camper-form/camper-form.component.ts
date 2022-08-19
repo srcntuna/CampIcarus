@@ -12,7 +12,7 @@ import { CamperCreate } from './CamperCreate';
 export class CamperFormComponent implements OnInit {
   camper: Camper = {
     name: '',
-    age: 0
+    age: 0,
   };
 
   @Output() newCamper: EventEmitter<Camper> = new EventEmitter();
