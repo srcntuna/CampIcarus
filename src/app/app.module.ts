@@ -9,6 +9,8 @@ import { CampersPageComponent } from './campers-page/campers-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { CamperFormComponent } from './camper-form/camper-form.component';
+import { ActivitiesFormComponent } from './activities-form/activities-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { CamperFormComponent } from './camper-form/camper-form.component';
     CampersPageComponent,
     HomePageComponent,
     SignUpPageComponent,
-    CamperFormComponent
+    CamperFormComponent,
+    ActivitiesFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

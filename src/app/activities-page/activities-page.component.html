@@ -1,1 +1,8 @@
-<p>activities-page works!</p>
+<div class="d-flex">
+    <div class="card" style="width: 18rem;" *ngFor="let activity of activities">
+        <div class="card-body">
+          <h5 class="card-title">{{activity.name}}</h5>  
+          <p class="card-text">{{activity.difficulty}}</p>
+        </div>
+      </div>
+</div>
