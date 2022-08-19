@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,8 @@ import { CampersPageComponent } from './campers-page/campers-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { CamperFormComponent } from './camper-form/camper-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CamperService } from './camper.service';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,10 @@ import { CamperFormComponent } from './camper-form/camper-form.component';
     CampersPageComponent,
     HomePageComponent,
     SignUpPageComponent,
-    CamperFormComponent
+    CamperFormComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [CamperService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
