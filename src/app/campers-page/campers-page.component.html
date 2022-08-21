@@ -1,42 +1,39 @@
-<app-camper-form (newCamper)="receiveNewCamper($event)"></app-camper-form>
+<div class="container">
+  <app-camper-form
+    (createNewCamper)="receiveNewCamper($event)"
+  ></app-camper-form>
 
-<div class="container" id="main-container">
-  <div class="row">
-    <div *ngFor="let camper of campers" class="col-md-6 col-xl-3">
-      <div class="card m-b-30">
-        <div class="card-body row">
-          <div class="col-6">
-            <a href=""
-              ><img
-                src="https://bootdey.com/img/Content/avatar/avatar5.png"
-                alt=""
-                class="img-fluid rounded-circle w-60"
-            /></a>
+  <br />
+  <div class="container" id="main-container">
+    <div class="row">
+      <h2 class="row justify-content-center">CAMPERS</h2>
+      <div *ngFor="let camper of campers" class="col-md col-xl-3 mb-3">
+        <div class="card m-b-30">
+          <div class="card-body row">
+            <div class="col-6">
+              <a href=""
+                ><img
+                  src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                  alt=""
+                  class="img-fluid rounded-circle w-60"
+              /></a>
+            </div>
+            <div class="col-6 card-title align-self-center mb-0">
+              <h5>{{ camper?.name }}</h5>
+            </div>
           </div>
-          <div class="col-6 card-title align-self-center mb-0">
-            <h5>{{ camper?.name }}</h5>
-          </div>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            <i class="fa fa-phone float-right"></i>Age : {{ camper?.age }}
-          </li>
-        </ul>
-        <div class="card-body">
-          <div class="float-right btn-group btn-group-sm">
-            <a
-              class="btn btn-primary tooltips"
-              data-placement="top"
-              data-original-title="Edit"
-              ><i class="fa fa-pencil"></i>
-            </a>
-            <a
-              class="btn btn-secondary tooltips"
-              data-placement="top"
-              data-original-title="Delete"
-              ><i class="fa fa-times"></i
-            ></a>
-          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fa fa-phone float-right"></i>Age : {{ camper?.age }}
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="btn btn-dark"
+            [routerLink]="['/campers', camper.id]"
+          >
+            Details
+          </button>
         </div>
       </div>
     </div>

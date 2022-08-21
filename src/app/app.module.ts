@@ -13,6 +13,9 @@ import { CamperFormComponent } from './camper-form/camper-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CamperService } from './camper.service';
 import { ActivitiesFormComponent } from './activities-form/activities-form.component';
+import { CamperDetailComponent } from './camper-detail/camper-detail.component';
+import { AddCamperComponent } from './add-camper/add-camper.component';
+import { SearchCamperComponent } from './search-camper/search-camper.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { ActivitiesFormComponent } from './activities-form/activities-form.compo
     HomePageComponent,
     SignUpPageComponent,
     CamperFormComponent,
+    CamperDetailComponent,
+    AddCamperComponent,
+    SearchCamperComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [CamperService],

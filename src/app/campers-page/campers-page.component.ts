@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CamperCreate } from '../camper-form/CamperCreate';
+import { CreateCamper } from '../add-camper/CreateCamper';
+import { Camper } from '../camper-form/Camper';
 import { CamperService } from '../camper.service';
-import { Camper } from './Camper';
 
 @Component({
   selector: 'app-campers-page',
@@ -19,5 +19,6 @@ export class CampersPageComponent implements OnInit {
 
   receiveNewCamper(newCamper: Camper) {
     this.campers.push(newCamper);
+    this.camperService.currentCampers = this.campers;
   }
 }

@@ -1,0 +1,68 @@
+<div id="search-component">
+  <div class="container">
+    <br />
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <form class="card card-sm">
+          <div class="card-body row no-gutters align-items-center">
+            <div class="col-auto">
+              <i class="fas fa-search h4 text-body"></i>
+            </div>
+            <!--end of col-->
+            <div class="col">
+              <input
+                class="form-control form-control-lg form-control-borderless"
+                type="search"
+                placeholder="Search camper..."
+                #searchBox
+                id="search-box"
+                (input)="search(searchBox.value)"
+              />
+            </div>
+            <!--end of col-->
+          </div>
+        </form>
+      </div>
+      <!--end of col-->
+    </div>
+  </div>
+  <br />
+  <!-- <label for="search-box">Hero Search</label>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" /> -->
+
+  <div class="container" id="main-container">
+    <div class="row">
+      <h2 class="row justify-content-center">FOUND CAMPERS</h2>
+
+      <div *ngFor="let camper of campers$ | async" class="col-md col-xl-3 mb-3">
+        <div class="card m-b-30">
+          <div class="card-body row">
+            <div class="col-6">
+              <a href=""
+                ><img
+                  src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                  alt=""
+                  class="img-fluid rounded-circle w-60"
+              /></a>
+            </div>
+            <div class="col-6 card-title align-self-center mb-0">
+              <h5>{{ camper?.name }}</h5>
+            </div>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fa fa-phone float-right"></i>Age : {{ camper?.age }}
+            </li>
+          </ul>
+          <button
+            type="button"
+            class="btn btn-dark"
+            [routerLink]="['/campers', camper.id]"
+          >
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

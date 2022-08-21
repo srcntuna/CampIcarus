@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CreateCamper } from '../add-camper/CreateCamper';
 import { CamperService } from '../camper.service';
-import { Camper } from '../campers-page/Camper';
-import { CamperCreate } from './CamperCreate';
+import { Camper } from './Camper';
 
 @Component({
   selector: 'app-camper-form',
@@ -10,12 +10,12 @@ import { CamperCreate } from './CamperCreate';
   styleUrls: ['./camper-form.component.css'],
 })
 export class CamperFormComponent implements OnInit {
-  camper: Camper = {
+  newCamper: CreateCamper = {
     name: '',
     age: 0,
   };
 
-  @Output() newCamper: EventEmitter<Camper> = new EventEmitter();
+  @Output() createNewCamper: EventEmitter<Camper> = new EventEmitter();
 
   constructor(
     private router: Router,
@@ -26,13 +26,10 @@ export class CamperFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.camper = new Camper();
-
-    debugger;
     this.camperService
-      .addCamper(this.camper)
-      .subscribe((result) => console.log(result));
-
-    this.newCamper.emit(this.camper);
+      .addCamper(this.newCamper)
+      .subscribe((generatedCamper) =>
+        this.createNewCamper.emit(generatedCamper)
+      );
   }
 }
