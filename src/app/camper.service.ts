@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { CreateCamper } from './add-camper/CreateCamper';
 import { Camper } from './camper-form/Camper';
 import { environment } from 'src/environments/environment';
@@ -11,11 +11,21 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class CamperService {
-  currentCampers: Camper[] = [];
+  // currentCampers: Camper[];
+
+  currentCampers: Camper[];
 
   private apiServerUrl = environment.apiBaseUrl;
 
   constructor(private httpClient: HttpClient) {}
+
+  setCurrentCampers(campers: Camper[]) {
+    this.currentCampers = campers;
+  }
+
+  getCurrentCampers(): Observable<Camper[]> {
+    return of(this.currentCampers);
+  }
 
   getCampers(): Observable<Camper[]> {
     return this.httpClient.get<Camper[]>(`${this.apiServerUrl}/campers`);
@@ -35,9 +45,9 @@ export class CamperService {
   }
 
   searchCampers(term: string): Observable<Camper[]> {
-    if (!term.trim()) {
+    if (term.trim().length === 0) {
       // if not search term, return empty hero array.
-      return of([]);
+      return this.getCampers();
     }
     return this.httpClient
       .get<Camper[]>(`${this.apiServerUrl}/campers?name=${term}`)

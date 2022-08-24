@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateCamper } from '../add-camper/CreateCamper';
 import { CamperService } from '../camper.service';
@@ -14,6 +14,8 @@ export class CamperFormComponent implements OnInit {
     name: '',
     age: 0,
   };
+
+  @Input() currentCampers: Camper[];
 
   @Output() createNewCamper: EventEmitter<Camper> = new EventEmitter();
 

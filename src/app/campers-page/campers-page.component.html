@@ -1,5 +1,6 @@
 <div class="container">
   <app-camper-form
+    [currentCampers] = "campers"
     (createNewCamper)="receiveNewCamper($event)"
   ></app-camper-form>
 

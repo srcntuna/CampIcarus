@@ -14,11 +14,14 @@ export class CampersPageComponent implements OnInit {
   constructor(private camperService: CamperService) {}
 
   ngOnInit(): void {
-    this.camperService.getCampers().subscribe((data) => (this.campers = data));
+    this.camperService.getCampers().subscribe((data) => {
+      this.campers = data;
+      this.camperService.setCurrentCampers(data);
+    });
   }
 
   receiveNewCamper(newCamper: Camper) {
     this.campers.push(newCamper);
-    this.camperService.currentCampers = this.campers;
+    this.camperService.setCurrentCampers(this.campers);
   }
 }

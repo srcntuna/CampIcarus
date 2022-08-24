@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
 import { Camper } from '../camper-form/Camper';
 import { CamperService } from '../camper.service';
 
@@ -11,8 +11,10 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
   styleUrls: ['./search-camper.component.css'],
 })
 export class SearchCamperComponent implements OnInit {
-  campers$!: Observable<Camper[]>;
+  campers$: Observable<Camper[]>;
   private searchTerms = new Subject<string>();
+
+  @Input() currentCampers: Camper[];
 
   constructor(private camperService: CamperService) {}
 
@@ -22,8 +24,6 @@ export class SearchCamperComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
     this.campers$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
